@@ -1,0 +1,41 @@
+You’ll configure a working Express.js API to use Sequelize to interact with a MySQL database
+
+
+=============================================================================================
+
+Acceptance Criteria
+GIVEN a functional Express.js API
+WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
+THEN I am able to connect to a database using Sequelize
+WHEN I enter schema and seed commands
+THEN a development database is created and is seeded with test data
+WHEN I enter the command to invoke the application
+THEN my server is started and the Sequelize models are synced to the MySQL database
+WHEN I open API GET routes in Insomnia for categories, products, or tags
+THEN the data for each of these routes is displayed in a formatted JSON
+WHEN I test API POST, PUT, and DELETE routes in Insomnia
+THEN I am able to successfully create, update, and delete data in my database
+
+=============================================================================================
+
+3. Define the models: Define the database models you'll be using in your application. For example, you might have models for `products`, `orders`, `users`, and `categories`.
+
+4. Set up the database connection: Configure the Sequelize instance to connect to your MySQL database.
+
+5. Define the routes: Define the API routes for your e-commerce site. For example, you might have routes for `GET /products` to retrieve all products, `POST /products` to create a new product, and `PUT /products/:id` to update a product by ID.
+
+6. Define the controllers: Define the controller functions that handle the business logic for each API route. For example, the `GET /products` route might call a `getAllProducts` function that queries the database for all products.
+
+7. Test the API: Use a tool like Postman to test your API endpoints and make sure they're working as expected.
+
+8. Deploy the application: Deploy your Express.js application to a server or cloud platform so that it can be accessed by your users.
+
+That's a high-level overview of the steps involved in building an e-commerce site using Express.js and Sequelize with a MySQL database. Of course, there are many details to consider and many implementation decisions to make along the way. You'll want to refer to the documentation for each of these tools to learn how to use them effectively.
+
+
+============================================================================================
+Build out the modals in sequelize. 
+- These populate the 
+
+Config folder is all done
+DB folder is all done
