@@ -1,175 +1,221 @@
-# 13 Object-Relational Mapping (ORM): E-Commerce Back End
+<header style="height: 100px; background: linear-gradient(to right, #000046, #1CB5E0);"><h1 style="font-size: 65px; text-align: center"><strong></strong>E-Commerce Backend</h1></header>
 
-## Your Task
+<br />
 
-Your task is to build the back end for an e-commerce site by modifying starter code. You’ll configure a working Express.js API to use Sequelize to interact with a MySQL database.
+[![${license}](https://img.shields.io/badge/license-mit-blue)](#license)
 
-## Acceptance Criteria
 
-```md
-GIVEN a functional Express.js API
-WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
-THEN I am able to connect to a database using Sequelize
-WHEN I enter schema and seed commands
-THEN a development database is created and is seeded with test data
-WHEN I enter the command to invoke the application
-THEN my server is started and the Sequelize models are synced to the MySQL database
-WHEN I open API GET routes in Insomnia for categories, products, or tags
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete data in my database
-```
+<br />
 
-## Mock-Up
+> # [Description](#description)
+This is to demonstrate the back-end of an e-commerce store, using an API interface. It uses a working Express.js API to use Sequelize to interact with a MySQL database.
 
-The following animation shows the application's GET routes to return all categories, all products, and all tags being tested in Insomnia:
+<br />
+<br />
 
-![In Insomnia, the user tests “GET tags,” “GET Categories,” and “GET All Products.”.](./Assets/13-orm-homework-demo-01.gif)
+---
+<details>
+<summary style="font-size: 25px">Table of Contents</summary> 
 
-The following animation shows the application's GET routes to return a single category, a single product, and a single tag being tested in Insomnia:
+- [Description](#description)
+- [Getting Started](#getting-started)
+  - [Project Status](#project-status)
+  - [Installation](#installation)
+  - [Useage](#useage)
+  - [Demonstration](#demonstration)
+  - [Contributing Guidelines](#contributing)
+  - [Test Instructions](#test) 
+  - [License](#license)
+- [Credits](#credits)
+  - [Contributors](#contributors)
+  - [Acknowledgements](#acknowledgements)
+- [Questions](#questions)
+</details>
 
-![In Insomnia, the user tests “GET tag by id,” “GET Category by ID,” and “GET One Product.”](./Assets/13-orm-homework-demo-02.gif)
+<br />
+<br />
 
-The following animation shows the application's POST, PUT, and DELETE routes for categories being tested in Insomnia:
+---
 
-![In Insomnia, the user tests “DELETE Category by ID,” “CREATE Category,” and “UPDATE Category.”](./Assets/13-orm-homework-demo-03.gif)
+> # [Getting Started](#getting-started)
 
-Your walkthrough video should also show the POST, PUT, and DELETE routes for products and tags being tested in Insomnia.
+<br />
 
-## Getting Started
+## [Project Status](#project-status)
+    MVP - Minimal Viable Product
 
-This Challenge will require a video submission. Refer to the [Fullstack Blog Video Submission Guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) for additional guidance on creating a video.
+<br />
 
-You’ll need to use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect your Express.js API to a MySQL database and the [dotenv](https://www.npmjs.com/package/dotenv) package to use environment variables to store sensitive data.
+To get a look at the code used for this application, checkout our <a href="https://github.com/werthird/E-Commerce-Backend-Module-13">GitHub Repo!</a> 
 
-Use the `schema.sql` file in the `db` folder to create your database with MySQL shell commands. Use environment variables to store sensitive data like your MySQL username, password, and database name.
+<br />
 
-### Database Models
+<u>*Click on this [**LINK**](https://drive.google.com/file/d/1mlKcP4N2z00hUJPYBmw8iTNiAbQJuZnH/view) to get a walk through video of how to use the application.*</u>
 
-Your database should contain the following four models, including the requirements listed for each model:
+<br />
 
-* `Category`
+## [Installation](#installation)
+If you are wanting to use this application on your own system, you will need to know a few things:
 
-  * `id`
+1.  There is no front-end or command-line that will allow interaction with this code. The code is interacted with through a API interface like Insomnia or Postman.
 
-    * Integer.
+2. Clone down this repo onto your local system.
+
+3. After doing so, open a terminal in the E-Commerce-Backend-Module-13 file, and enter the following code to download the needed modules:
+	```
+	npm i
+	```
+4. Open insomnia and use the GET, POST, PUT, or DELETE routes to interact with this backend.
+
+<br />
+
+## [Useage](#useage)
+This is a command-line application that will take you through a series of prompts.
+
+1. After the module is installed on your local system, you are ready to use this app. To start the server, enter this into the terminal.
+	```
+	node server.js
+	```
+
+2. You are not able to interact with the interface. Follow the steps below:
+
+    I. **GET Route**
+    ```
+    There are six possible GET routes
+
+        1. /api/products - will return all the Products, plus their associated Categories and Tags.
+
+        2. /api/products/:id - :id is the Products id; will return a single product, plus associated Category and Tags.
+
+        3. /api/categories - will return all Categories and associated Products.
+
+        4. /api/categories/:id - :id is the Categories id; will return a single Category and associated Product
+
+        5. /api/tags - will return all the Tags, plus their accosiated Products.
+
+        6. /api/tags/:id - :id is Tag id; will return a single Tag and associate Product
+    ```
+
+    II. **POST Route**
+    ```
+    There are three possible POST routes:
+
+      1. /api/products - req.body syntax is:
+          {
+            "product_name": "STRING",
+            "price": DECIMAL,
+            "stock": INTEGER,
+            "category_id": INTEGER,
+            "tagIds": [INTEGER, ect.]
+          }
+
+      2. /api/categories - req.body syntax is:
+          {
+            "category_name": "STRING"
+          } 
+
+      3. /api/tags - req.body syntax is:
+          {
+            "tag_name": "STRING"
+          }
+    ```
+
+    III. **PUT Route**
+    ```
+    There are three possible PUT routes:
+
+        1. api/products/:id - :id is Product id; req.body syntax it:
+          {
+            "product_name": "STRING",
+            "price": DECIMAL,
+            "stock": INTEGER,
+            "category_id": INTEGER,
+            "tagIds": [INTEGER, ect.]
+          }
+        2. /api/categories/:id - :id is Categories id; req.body syntax it:
+          {
+            "category_name": "STRING"
+          } 
+
+      3. /api/tags/:id - :id is Tags id; req.body syntax it:
+          {
+            "tag_name": "STRING"
+          }
+    ```
+
+    IV. **DELETE Route**
+    ```
+    There are three possible DELETE routes:
+
+      1. api/products/:id - :id is Product id
+      
+      2. /api/categories/:id - :id is Categories id
+        
+      3. /api/tags/:id - :id is Tags id
   
-    * Doesn't allow null values.
-  
-    * Set as primary key.
-  
-    * Uses auto increment.
+    ```
 
-  * `category_name`
-  
-    * String.
-  
-    * Doesn't allow null values.
 
-* `Product`
+<br />
 
-  * `id`
-  
-    * Integer.
-  
-    * Doesn't allow null values.
-  
-    * Set as primary key.
-  
-    * Uses auto increment.
+<hr />
 
-  * `product_name`
-  
-    * String.
-  
-    * Doesn't allow null values.
+## [Demonstration](#demonstration)
 
-  * `price`
-  
-    * Decimal.
-  
-    * Doesn't allow null values.
-  
-    * Validates that the value is a decimal.
+<br />
 
-  * `stock`
-  
-    * Integer.
-  
-    * Doesn't allow null values.
-  
-    * Set a default value of `10`.
-  
-    * Validates that the value is numeric.
+<u>*Click on this [**LINK**](https://drive.google.com/file/d/1mlKcP4N2z00hUJPYBmw8iTNiAbQJuZnH/view) to get a walk through video of how to use the application.*</u>
 
-  * `category_id`
-  
-    * Integer.
-  
-    * References the `Category` model's `id`.
+<br />
 
-* `Tag`
+<img style="text-align: center; border: solid 2px white; width:100%;height:100%" src="./Assets/ecommerce-backend-insomnia-screenshot.jpg" alt="Insomnia demonstrating a GET route to tags database"/>
 
-  * `id`
-  
-    * Integer.
-  
-    * Doesn't allow null values.
-  
-    * Set as primary key.
-  
-    * Uses auto increment.
+<br />
 
-  * `tag_name`
-  
-    * String.
+## [Contributing Guidelines](#contributing)
+No contributing guidelines. For any suggestions or comments, please see [Questions](#questions) section below.
 
-* `ProductTag`
+<br />
 
-  * `id`
+## [Test Instructions](#test)
+No testing instructions at this time.
 
-    * Integer.
+<br />
 
-    * Doesn't allow null values.
+## [License](#license)
+Distributed under the MIT License. See LICENSE.txt for more information.
 
-    * Set as primary key.
+<br />
+<br />
 
-    * Uses auto increment.
+---
 
-  * `product_id`
+> # [Credits](#credits)
 
-    * Integer.
+<br />
 
-    * References the `Product` model's `id`.
+## [Contributors](#contributors)
 
-  * `tag_id`
+This is built as a UCF Coding bootcamp homework assignment. There was some pre-written code that had to be finished and formulated to meet the assignments requirements.
 
-    * Integer.
+Finished by Devin Reilly
 
-    * References the `Tag` model's `id`.
+<br />
 
-### Associations
+## [Acknowledgements](#acknowledgements)
+- UCF GitLab starter code
+- [The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide) - README Template 
+- UCF Instructor **John Dinsmore**, and TA's, **Kristofer Marshall** and **Rider Cogswell**
+- Students of UCF Coding Boot Camp, in class, on Slack and on Discord
+- Research articles from Google Search, ChatGPT, MDN Docs, W3Schools
 
-You'll need to execute association methods on your Sequelize models to create the following relationships between them:
+<br />
+<br />
 
-* `Product` belongs to `Category`, and `Category` has many `Product` models, as a category can have multiple products but a product can only belong to one category.
+---
 
-* `Product` belongs to many `Tag` models, and `Tag` belongs to many `Product` models. Allow products to have multiple tags and tags to have many products by using the `ProductTag` through model.
+> # [Questions](#questions)
 
-> **Hint:** Make sure you set up foreign key relationships that match the column we created in the respective models.
+Here is a link to our <a href="https://github.com/werthird">GitHub profile page!</a>
 
-### Fill Out the API Routes to Perform RESTful CRUD Operations
-
-Fill out the unfinished routes in `product-routes.js`, `tag-routes.js`, and `category-routes.js` to perform create, read, update, and delete operations using your Sequelize models.
-
-Note that the functionality for creating the many-to-many relationship for products has already been completed for you.
-
-> **Hint**: Be sure to look at the mini-project code for syntax help and use your model's column definitions to figure out what `req.body` will be for POST and PUT routes!
-
-### Seed the Database
-
-After creating the models and routes, run `npm run seed` to seed data to your database so that you can test your routes.
-
-### Sync Sequelize to the Database on Server Start
-
-Create the code needed in `server.js` to sync the Sequelize models to the MySQL database on server start.
+Or send us an <a href="mailto: werthird@aol.com?subject=SVG Logo Maker Feedback">Email!</a>
